@@ -1,16 +1,31 @@
 #1 - Escreva uma função que recebe uma lista de números e retorna a soma de todos os elementos da lista:
-'''def soma_lista():
-    numeros = []
-    quantidade = int(input("Quantos números você deseja somar? "))
-    for _ in range(quantidade):
-        numero = float(input("Digite um número: "))
-        numeros.append(numero)
-    return sum(numeros)
-resultado = soma_lista()
-print(f"A soma dos números na lista é: {resultado}")
+'''def soma_elementos():
+    soma = 0
+    for num in numeros:
+        soma += num
+    return soma
 
+def soma_elementos_indice(numeros):
+    soma = 0
+    for i in range(len(numeros)):
+        soma += numeros[i]
+        return soma
+
+def forca_opcao(lista_opcoes, msg):
+    possibilidades = '\n'.join(lista_opcoes)
+    possibilidades = '\n' +possibilidades+'\n->'
+    opcao = input(f"{msg+possibilidades}")
+    while opcao not in lista_opcoes:
+        print(f"Opção inválida! Somente essas:{possibilidades}")
+        opcao = input(msg)
+    return opcao
+
+vinhos = ['Sangue de boi,' 'Pérgola', 'Chapinha', 'Cantinho do Vale']
+escolha_vinho = forca_opcao("Qual vinho vc escolhe?\n", vinhos)
+print(f"Você escolheu o {escolha_vinho}")
 
 #2 - Crie uma função que recebe uma lista de números e retorna o maior elemento da lista:
+#Meu jeito:
 def verificacaonumero(msg):
     verificacao = input(msg)
     while not verificacao.isnumeric():
@@ -27,20 +42,31 @@ def maior_num(lista_num):
 numeros = [verificacaonumero("Digite um número: ") for _ in range(5)]
 print("Maior número da lista é:", maior_num(numeros))
 
-#3 - Faça uma função que recebe uma lista de strings e retorna uma nova lista contendo apenas as strings que começam com a letra 'a'
-def comeca_com_a(palavra, prefixo):
-    return palavra[:len(prefixo)] == prefixo
+#Jeito do professor:
+def acha_maior_indice(lista):
+    indice_maior = 0
+    maior = lista[indice_maior]
+    for i in range(len(lista))
+        if lista[i] > maior:
+            indice_maior = i
+            maior = lista[indice_maior]
+    return indice_maior
+precos = [3,7,5,1]
+carros = ['marea', 'celtinha brabo', 'gol', 'uno']
+indice_mais_caro = achar_maior_indice(precos)
+print(f"O carro mais caro é o {carros[indice_mais_caro]} e custa {precos[indice_mais_caro]}")
 
-def filtrar_strings_iniciadas_com_a(lista):
-    resultado = []
+#3 - Faça uma função que recebe uma lista de strings e retorna uma nova lista contendo apenas as strings que começam com a letra 'a'
+def comeca_com_a(lista):
+    palavras_que_comecam_a = []
     for palavra in lista:
-        if comeca_com_a(palavra, 'a') or comeca_com_a(palavra, 'A'):
-            resultado.append(palavra)
-    return resultado
+        if palavra[0] in ['a', 'A']:
+            palavras_que_comecam_a.append(palavra)
+    return palavras_que_comecam_a
 
 minha_lista = ["amigo", "banana", "Abacaxi", "casa", "Arroz"]
-strings_com_a = filtrar_strings_iniciadas_com_a(minha_lista)
-print(strings_com_a) 
+strings_com_a = comeca_com_a(minha_lista)
+print(strings_com_a)
 
 # 4 - Escreva uma função que recebe uma lista de números e retorna uma nova lista contendo apenas os números pares 
 def filtro_pares(lista):
@@ -76,14 +102,38 @@ comprimentos = filtro_letras(palavras_do_usuario)
 print("Comprimentos das palavras:", comprimentos)
 
 #6 - Faça uma função que recebe duas listas e retorna uma lista contendo os elementos comuns entre as duas listas
-def elementos_comuns(lista1, lista2):
-    resultado = [palavra for palavra in lista1 if palavra in lista2]
-    return resultado
+#forma 1:
+lista1 = ['a', 'b', 'c', 'd']
+lista2 = ['f', 'a', 'g', 'k','c']
+def interseccao(lista1,lista2):
+    comuns = []
+    for elem1 in lista1:
+        for elem2 in lista2:
+            if elem1 == elem2:
+                comuns.append(elem1)
+                break
+    return comuns
 
-lista1 = input("Digite as palavras da primeira lista (separadas por espaço): ").split()
-lista2 = input("Digite as palavras da segunda lista (separadas por espaço): ").split()
-resultado_in = elementos_comuns(lista1, lista2)
-print("Elementos comuns usando 'in':", resultado_in)
+#forma 2:
+def interseccao(lista1,lista2):
+    comuns = []
+    for i in range(len(lista1)):
+        for j in range(len(lista2)):
+            elem1 = lista1[i]
+            elem2 = lista2[j]
+            if elem1 == elem2:
+                comuns.append(elem1)
+                break
+    return comuns
+
+#forma3:
+def interseccao(lista1,lista2):
+    comuns = []
+    for elem1 in lista1:
+        if elem1 in lista2:
+            comuns.append(elem1)
+            break
+    return comuns'''
 
 #7 - Escreva uma função que recebe uma lista de números e retorna True se a lista estiver em ordem crescente e False caso contrário
 def verifica_ordem_crescente(lista):
@@ -97,13 +147,17 @@ resultado = verifica_ordem_crescente(numeros)
 print(f"A lista está em ordem crescente? {resultado}")
 
 #8 - Crie uma função que recebe uma lista de números e retorna uma nova lista com os elementos em ordem inversa
-def inverter_lista_reverse(lista):
-    lista.reverse()
-    return lista
+def inverter(lista):
+    ultimo = len(lista) - 1
+    for i in range(len(lista)//2):
+        aux = lista[i]
+        lista[i] = lista[ultimo - i]
+        lista[ultimo - i] = aux
+    return
 
-numeros = [1, 2, 3, 4, 5]
-lista_invertida = inverter_lista_reverse(numeros)
-print(lista_invertida)
+numeros = [10,20,30,40,50,60,70,80,90]
+inverter(numeros)
+print(numeros)
 
 #9 - Faça uma função que recebe uma lista de strings e retorna uma nova lista contendo as mesmas strings, mas em ordem alfabética:
 def ordenar_lista_strings(lista):
@@ -111,7 +165,7 @@ def ordenar_lista_strings(lista):
 
 strings = ["banana", "maçã", "laranja", "abacaxi"]
 lista_ordenada = ordenar_lista_strings(strings)
-print(lista_ordenada)'''
+print(lista_ordenada)
 
 #10- Escreva uma função que recebe uma lista de números e retorna a média aritmética dos elementos da lista
 def verificacaonumero(msg):
