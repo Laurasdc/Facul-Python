@@ -20,7 +20,7 @@ plt.colorbar()
 plt.show()'''
 
 #1,2:
-def mostra_matriz(matriz):
+'''def mostra_matriz(matriz):
     for linha in matriz:
         print(linha)
     return
@@ -31,7 +31,7 @@ def cria_matriz(linhas, colunas):
         for j in range(colunas):
             linha.append(0)
         matriz.append(linha)
-    return matriz
+    return matriz'''
 
 #3- Faça uma função que recebe uma matriz quadrada como parâmetro e altera todos os elementos da diagonal para 1.
 '''def diagonal(matriz):
@@ -99,5 +99,33 @@ for i in range(len(xadrez)):
                 xadrez[i][j] = 1'''
 
 #10 - Devido ao covid as cadeiras de cinema tem que ser utilizadas com um espaçamento de uma cadeira desocupada tanto na frente quanto atrás e dos lados. Represente está situação com uma matriz 50x50 em que cada local (i,j) tem nele a palavra “vaga” ou ocupada.
+def cria_matriz(linhas, colunas):
+    matriz = []
+    for i in range(linhas):
+        linha = []
+        for j in range(colunas):
+            linha.append("[vaga]")
+        matriz.append(linha)
+    return matriz
+
+
+def mostra_matriz(matriz):
+    for linha in matriz:
+        print(" ".join(linha))
+    return
+
+
+def ocupa_cadeiras_com_espacamento(matriz, espacamento):
+    n = len(matriz)
+    
+    for i in range(0, n, espacamento+1):  
+        for j in range(0, n, espacamento+1):
+            matriz[i][j] = "[ocupada]"
+
+matriz_cinema = cria_matriz(50, 50)
+
+ocupa_cadeiras_com_espacamento(matriz_cinema, espacamento=1)
+
+mostra_matriz(matriz_cinema)
 
 
