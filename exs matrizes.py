@@ -20,7 +20,7 @@ plt.colorbar()
 plt.show()'''
 
 #1,2:
-'''def mostra_matriz(matriz):
+def mostra_matriz(matriz):
     for linha in matriz:
         print(linha)
     return
@@ -31,7 +31,7 @@ def cria_matriz(linhas, colunas):
         for j in range(colunas):
             linha.append(0)
         matriz.append(linha)
-    return matriz'''
+    return matriz
 
 #3- Faça uma função que recebe uma matriz quadrada como parâmetro e altera todos os elementos da diagonal para 1.
 '''def diagonal(matriz):
