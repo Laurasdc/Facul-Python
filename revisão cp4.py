@@ -199,7 +199,7 @@ if idade >= 18:
         mostraCatalogo(lista_vinhos, lista_precos)
         escolha = forcaEscolha(lista_vinhos, 'Digite o nome do vinho que deseja comprar: ')
         i = buscaIndice(escolha, lista_vinhos)
-        qtd = forcaNumerico(f'Digite a quantidade de garrafas que voce quer do vinho {escolha}: ')
+        qtd = forca_num(f'Digite a quantidade de garrafas que voce quer do vinho {escolha}: ')
         lista_qtd[i] += qtd
         precos_vinhos[i] += lista_precos[i] * qtd
         mostrarPrateleira(prateleira)
